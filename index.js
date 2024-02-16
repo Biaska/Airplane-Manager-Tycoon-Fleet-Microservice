@@ -51,7 +51,7 @@ app.get('/route', (req, res) => {
 // post new route
 app.post('/route', (req, res) => {
     const routeData = req.body;
-    db.pool.query('INSERT INTO route SET ? RETURNING *', routeData, (err, result) => {
+    db.pool.query('INSERT INTO route SET ?', routeData, (err, result) => {
         if (err) {
             // log error
             console.log(err)
@@ -84,7 +84,7 @@ app.post('/route', (req, res) => {
 // delete route with id
 app.delete('/route', (req, res) => {
     const routeID = req.body.id;
-    db.pool.query('DELETE FROM route WHERE id=? RETURNING *', routeID, (err, result) => {
+    db.pool.query('DELETE FROM route WHERE id=?', routeID, (err, result) => {
         if (err) {
 
             // log error
