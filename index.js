@@ -5,12 +5,20 @@ const bodyParser = require('body-parser');
 
 dotenv.config();
 const port = process.env.PORT;
+var env = process.env.NODE_ENV || 'development';
 
 // db pool
-var db = require('./db-connector');
+if (env === 'development') {
+    var db = require('./local-db-connector');
+} else {
+    var db = require('./prod-db-connector');
+}
+
 
 // Middleware
 app.use(bodyParser.json());
+
+
 
 // CRUD operations for 'route'
 app.get('/route', (req, res) => {
