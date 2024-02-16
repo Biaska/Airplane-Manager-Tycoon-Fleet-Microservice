@@ -107,7 +107,7 @@ app.delete('/route', (req, res) => {
         } else {
 
             // no row found with id 
-            if (result.length===0) {
+            if (result.affectedRows===0) {
                 res.status(404).send("Row not found")
             } else {                                        // Row deleted
                 const results = {
