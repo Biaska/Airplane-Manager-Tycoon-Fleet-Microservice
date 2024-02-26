@@ -10,6 +10,9 @@ var pool = mysql.createPool({
 	user: process.env.PROD_DB_USER,
 	password: process.env.PROD_DB_PASSWORD,
 	database: process.env.PROD_DB_DATABASE,
+	ssl: {
+		rejectUnauthorized: true,
+	  },
 }); 
 
 // Export it for use in our application

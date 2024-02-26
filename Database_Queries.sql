@@ -19,3 +19,10 @@ CREATE OR REPLACE TABLE route(
     capacity int unsigned DEFAULT NULL,
     PRIMARY KEY(id)
 )
+
+CREATE TABLE hub(
+    id INT AUTO_INCREMENT,
+    iata varchar(3) NOT NULL UNIQUE,
+    sheet_id varchar(50) DEFAULT NULL,
+    PRIMARY KEY(id)
+);
