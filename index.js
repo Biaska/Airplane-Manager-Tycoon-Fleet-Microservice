@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 
 // CRUD operations for 'route'
 app.get('/route', (req, res) => {
+    console.log("GET ROUTE")
     db.pool.query('SELECT * FROM route', (err, results) => {
         if (err) {
             //  log error
@@ -49,6 +50,7 @@ app.get('/route', (req, res) => {
 
 // post new route
 app.post('/route', (req, res) => {
+    console.log("POST ROUTE")
     const routeData = req.body;
     db.pool.query('INSERT INTO route SET ?', routeData, (err, result) => {
         if (err) {
@@ -82,6 +84,7 @@ app.post('/route', (req, res) => {
 
 // update route
 app.put('/route', (req, res) => {
+    console.log("PUT ROUTE")
     const routeData = req.body;
     db.pool.query('UPDATE route SET ? WHERE ?', [routeData, routeData.id], (err, result) => {
         if (err) {
@@ -115,6 +118,7 @@ app.put('/route', (req, res) => {
 
 // delete route with id
 app.delete('/route', (req, res) => {
+    console.log("DELETE ROUTE")
     const routeID = req.body.id;
     db.pool.query('DELETE FROM route WHERE id=?', routeID, (err, result) => {
         if (err) {
@@ -155,6 +159,7 @@ app.delete('/route', (req, res) => {
 
 // CRUD operations for 'hub'
 app.get('/hub', (req, res) => {
+    console.log("GET HUB")
     db.pool.query('SELECT * FROM hub', (err, results) => {
         if (err) {
             // Handle error
@@ -173,6 +178,7 @@ app.get('/hub', (req, res) => {
 });
 
 app.post('/hub', (req, res) => {
+    console.log("POST HUB")
     const hubData = req.body;
     db.pool.query('INSERT INTO hub SET ?', hubData, (err, result) => {
         if (err) {
@@ -196,6 +202,7 @@ app.post('/hub', (req, res) => {
 });
 
 app.put('/hub', (req, res) => {
+    console.log("PUT HUB")
     const hubData = req.body;
     db.pool.query('UPDATE hub SET ? WHERE ?', [hubData, { id: hubData.id }], (err, result) => {
         if (err) {
@@ -219,6 +226,7 @@ app.put('/hub', (req, res) => {
 });
 
 app.delete('/hub', (req, res) => {
+    console.log("DELETE HUB")
     const hubID = req.body.id;
     db.pool.query('DELETE FROM hub WHERE id=?', hubID, (err, result) => {
         if (err) {
