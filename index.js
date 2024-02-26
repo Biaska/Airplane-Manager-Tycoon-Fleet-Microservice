@@ -81,6 +81,39 @@ app.post('/route', (req, res) => {
     });
 });
 
+// update route
+app.put('/route', (req, res) => {
+    const routeData = req.body;
+    db.pool.query('UPDATE route SET ? WHERE ?', [routeData, routeData.id], (err, result) => {
+        if (err) {
+            // log error
+            console.log(err)
+
+            // set error message
+            let errMsg;
+            if (err.sqlMessage) {
+                errMsg = "Database error: " + err.sqlMessage
+            } else {
+                errMsg = "Server error: " + err
+            }
+
+            // send error
+            const error = {
+                error: 'Error updating route',
+                errorMessage: errMsg
+            }
+            res.status(500).json(error);
+        } else {
+            // route created
+            const results = {
+                message: 'Route updated successfully',
+                result: result
+            }
+            res.status(201).json(results);
+        }
+    });
+});
+
 // delete route with id
 app.delete('/route', (req, res) => {
     const routeID = req.body.id;
@@ -121,28 +154,94 @@ app.delete('/route', (req, res) => {
 });
 
 
-// get all hubs
+// CRUD operations for 'hub'
 app.get('/hub', (req, res) => {
     db.pool.query('SELECT * FROM hub', (err, results) => {
-            if (err) {
-            // log error
-            console.log(err)
-            res.status(500).send('Error retrieving hubs');
+        if (err) {
+            // Handle error
+            console.log(err);
+            let errMsg = err.sqlMessage ? "Database error: " + err.sqlMessage : "Server error: " + err;
+            const error = {
+                error: 'Error retrieving hubs',
+                errorMessage: errMsg
+            }
+            res.status(500).json(error);
         } else {
+            // Return results
             res.json(results);
         }
     });
 });
 
-// post new hub
 app.post('/hub', (req, res) => {
     const hubData = req.body;
     db.pool.query('INSERT INTO hub SET ?', hubData, (err, result) => {
         if (err) {
-            console.log(err)
-            res.status(500).send('Error creating hub');
+            // Handle error
+            console.log(err);
+            let errMsg = err.sqlMessage ? "Database error: " + err.sqlMessage : "Server error: " + err;
+            const error = {
+                error: 'Error creating hub',
+                errorMessage: errMsg
+            }
+            res.status(500).json(error);
         } else {
-            res.status(201).send('Hub created successfully');
+            // Hub created
+            const results = {
+                message: 'Hub created successfully',
+                result: result
+            }
+            res.status(201).json(results);
+        }
+    });
+});
+
+app.put('/hub', (req, res) => {
+    const hubData = req.body;
+    db.pool.query('UPDATE hub SET ? WHERE ?', [hubData, { id: hubData.id }], (err, result) => {
+        if (err) {
+            // Handle error
+            console.log(err);
+            let errMsg = err.sqlMessage ? "Database error: " + err.sqlMessage : "Server error: " + err;
+            const error = {
+                error: 'Error updating hub',
+                errorMessage: errMsg
+            }
+            res.status(500).json(error);
+        } else {
+            // Hub updated
+            const results = {
+                message: 'Hub updated successfully',
+                result: result
+            }
+            res.status(201).json(results);
+        }
+    });
+});
+
+app.delete('/hub', (req, res) => {
+    const hubID = req.body.id;
+    db.pool.query('DELETE FROM hub WHERE id=?', hubID, (err, result) => {
+        if (err) {
+            // Handle error
+            console.log(err);
+            let errMsg = err.sqlMessage ? "Database error: " + err.sqlMessage : "Server error: " + err;
+            const error = {
+                error: 'Error deleting hub',
+                errorMessage: errMsg
+            }
+            res.status(500).json(error);
+        } else {
+            // No row found with id
+            if (result.affectedRows === 0) {
+                res.status(404).send("Row not found");
+            } else { // Row deleted
+                const results = {
+                    message: 'Hub deleted successfully',
+                    result: result
+                }
+                res.status(201).json(results);
+            }
         }
     });
 });
