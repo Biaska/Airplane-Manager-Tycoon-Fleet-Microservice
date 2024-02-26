@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 
+
 dotenv.config();
 const port = process.env.PORT;
 var env = process.env.NODE_ENV || 'development';
@@ -16,7 +17,13 @@ if (env === 'development') {
 
 // Middleware
 app.use(bodyParser.json());
-
+app.use(cors());
+app.use(
+    cors({
+        origin: ["https://localhost:3000", "https://localhost:5173"],
+        methods: "GET,POST,PUT,DELETE"
+    })
+)
 
 
 // CRUD operations for 'route'
