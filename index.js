@@ -60,6 +60,7 @@ app.get('/route', (req, res) => {
 app.post('/route', (req, res) => {
     console.log("POST ROUTE")
     const routeData = req.body;
+    console.log(routeData)
     db.pool.query('INSERT INTO route SET ?', routeData, (err, result) => {
         if (err) {
             // log error
