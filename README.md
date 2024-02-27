@@ -7,6 +7,8 @@ The microservice is hosted at: https://airplane-manager-tycoon-server.onrender.c
 
 **Since this is hosted on a free plan, the server is spun down after periods of inactivity, this may delay requests by ~50 seconds.**
 
+If you are having trouble with making requests from localhost, change your port to either 3000 or 5173, and try again.
+
 ## Contents
 
 - [Requesting and Receiving **Routes**](#-requesting-and-receiving-routes)
@@ -380,3 +382,8 @@ When there is an error when making any request to the server, it is structured l
 error: "Error creating route"
 errorMessage: (Error returned from either the server or database. This will either be "Server error: *error message*" or "Database error: *error message*")
 ```
+
+
+### UML Sequence Diagram
+
+![alt text](https://github.com/Biaska/Airplane-Manager-Tycoon-Fleet-Microservice/edit/main/UML-Diagram.png "Sequence Diagram")
