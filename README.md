@@ -9,9 +9,9 @@ The microservice is hosted at: https://airplane-manager-tycoon-server.onrender.c
 
 ## Contents
 
-- [Requesting and Receiving **Routes**](##-requesting-and-receiving-routes)
-- [Requesting and Receiving **Hubs**](##requesting-and-receiving-hubs)
-- [Error Object](##error-object)
+- [Requesting and Receiving **Routes**](#-requesting-and-receiving-routes)
+- [Requesting and Receiving **Hubs**](#requesting-and-receiving-hubs)
+- [Error Object](#error-object)
 
 ## Requesting and Receiving Routes
 URL: https://airplane-manager-tycoon-server.onrender.com/route
