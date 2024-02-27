@@ -14,7 +14,7 @@ If you are having trouble with making requests from localhost, change your port 
 - [Requesting and Receiving **Routes**](#-requesting-and-receiving-routes)
 - [Requesting and Receiving **Hubs**](#requesting-and-receiving-hubs)
 - [Error Object](#error-object)
-- [UML Diagram](#uml-diagram)
+- [UML Diagram](#uml-sequence-diagram)
 
 ## Requesting and Receiving Routes
 URL: https://airplane-manager-tycoon-server.onrender.com/route
