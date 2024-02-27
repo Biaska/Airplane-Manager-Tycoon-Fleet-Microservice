@@ -386,4 +386,5 @@ errorMessage: (Error returned from either the server or database. This will eith
 
 ### UML Sequence Diagram
 
-![alt text](https://github.com/Biaska/Airplane-Manager-Tycoon-Fleet-Microservice/edit/main/UML-Diagram.png "Sequence Diagram")
+![alt text](https://github.com/Biaska/Airplane-Manager-Tycoon-Fleet-Microservice/blob/main/UML-Diagram.png "Sequence Diagram")
+
